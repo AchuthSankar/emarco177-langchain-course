@@ -7,11 +7,22 @@ This repository is a starter project for learning and experimenting with LangCha
 The project currently includes:
 
 - A Python application entry point in `main.py`
-- Environment variable loading via Python Dotenv
-- LangChain and LangChain OpenAI dependencies configured in `pyproject.toml`
+- Environment variable loading via `python-dotenv`
+- LangChain and `langchain-openai` dependencies configured in `pyproject.toml`
+- Code quality tooling with `black` and `isort`
 - A clean starter layout suitable for adding AI workflows, prompts, chains, and tool integrations
 
 The current app is intentionally minimal and prints a startup message, which makes it easy to build on top of during the course.
+
+### Tools we added and what they do
+
+- `langchain`: the main library for building applications with LLMs, prompts, tools, memory, and chains
+- `langchain-openai`: integration for OpenAI models and chat APIs inside LangChain workflows
+- `python-dotenv`: loads environment variables from a `.env` file so API keys and config stay out of the codebase
+- `black`: auto-formats Python code to keep it consistent and readable
+- `isort`: automatically sorts Python imports in a clean, standard order
+
+These packages give us a lightweight but practical foundation for experimenting with AI application development while keeping the project clean and maintainable.
 
 ## Design
 
@@ -23,6 +34,15 @@ The project follows a simple, beginner-friendly structure:
 - LangChain libraries are imported as the foundation for future prompt and model interactions
 
 This keeps the project easy to understand while remaining flexible enough to evolve into a larger LangChain application.
+
+At a high level, the design is intentionally simple:
+
+- the Python app is the execution layer
+- environment variables hold secrets and config
+- LangChain handles model and prompt orchestration
+- formatting tools keep codebase quality consistent as the app grows
+
+That separation makes it easier to add features without mixing configuration, app logic, and AI integration code together.
 
 ## Setup
 
@@ -51,6 +71,14 @@ uv sync
 ```
 
 This creates the project environment and installs the dependencies defined in `pyproject.toml`.
+
+The dependency list in `pyproject.toml` currently includes:
+
+- `langchain`
+- `langchain-openai`
+- `python-dotenv`
+- `black`
+- `isort`
 
 If you want to install a package manually with uv, use:
 
@@ -87,12 +115,13 @@ Hello from emarco177-langchain-course!
 
 ```text
 emarco177-langchain-course/
-├── .env.example
+├── .env
 ├── .gitignore
+├── .venv/
 ├── main.py
 ├── pyproject.toml
 ├── README.md
-└── .venv/
+└── uv.lock
 ```
 
 ## Notes
