@@ -33,26 +33,29 @@ This keeps the project easy to understand while remaining flexible enough to evo
 - A GitHub account
 - An OpenAI API key
 
-### 1. Create and activate a virtual environment
+### 1. Install uv
 
-Using `venv`:
+If you do not already have `uv` installed, install it with:
 
 ```bash
-python -m venv .venv
-.venv\Scripts\activate
+pip install uv
 ```
 
-### 2. Install dependencies
+Or follow the official installation instructions for your platform.
+
+### 2. Create a virtual environment and install dependencies
 
 ```bash
-pip install -U pip
-pip install -e .
+uv venv
+uv sync
 ```
 
-You can also install the project dependencies directly with:
+This creates the project environment and installs the dependencies defined in `pyproject.toml`.
+
+If you want to install a package manually with uv, use:
 
 ```bash
-pip install langchain langchain-openai python-dotenv
+uv add langchain langchain-openai python-dotenv
 ```
 
 ### 3. Create a `.env` file
@@ -68,8 +71,10 @@ OPENAI_MODEL=gpt-4o-mini
 
 ### 4. Run the app
 
+Activate the environment and run the app:
+
 ```bash
-python main.py
+uv run python main.py
 ```
 
 Expected output:
